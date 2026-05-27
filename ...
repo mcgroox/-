@@ -23731,7 +23731,7 @@ local function joindiscord(input)
     pcall(function()
         SG:SetCore("SendNotification", {
             Title = "Discord",
-            Text = "you need to join if u want to get help/support or if u want to buy.",
+            Text = "you need to join if u want to get help/support or if u want to buy. the paid fetures are ForceHit (need follow target can hit in void), model hood gamepasses, (DarkChat, and AimViewer)", no spread rapid fire, void fix (fix the issue when u equip a item in void u get flunged), automatic guns, and finally. hitbox exploit basically hitbox extender dont changes the humanoid hitbox.
             Duration = 120,
         })
     end)
