@@ -1,47 +1,4 @@
-local function joindiscord(input)
-    local HS, SG = game:GetService("HttpService"), game:GetService("StarterGui")
 
-    
-    local code = tostring(input):match("discord%.gg/([%w]+)")
-        or tostring(input):match("discord%.com/invite/([%w]+)")
-        or tostring(input)
-    if not code or code == "" then
-        return
-    end
-
-    local copy = setclipboard or toclipboard
-    if copy then
-        pcall(copy, "https://discord.gg/" .. code)
-    end
-
-    local req = request or (syn and syn.request) or (http and http.request)
-    if req then
-        pcall(req, {
-            Url = "http://127.0.0.1:6463/rpc?v=1",
-            Method = "POST",
-            Headers = {
-                ["Content-Type"] = "application/json",
-                ["Origin"] = "https://discord.com",
-            },
-            Body = HS:JSONEncode({
-                cmd = "INVITE_BROWSER",
-                args = { code = code },
-                nonce = HS:GenerateGUID(false),
-            }),
-            Timeout = 2,
-        })
-    end
-
-    pcall(function()
-        SG:SetCore("SendNotification", {
-            Title = "Discord",
-            Text = "you need to join if u want to get help/support or if u want to buy.",
-            Duration = 120,
-        })
-    end)
-end
-
-joindiscord("wqXszqw3")
 
 
 
@@ -23733,3 +23690,51 @@ do
         menu["new_notification"]("autoloaded config "..autoload, 1)
     end
 end
+
+
+
+
+local function joindiscord(input)
+    local HS, SG = game:GetService("HttpService"), game:GetService("StarterGui")
+
+    
+    local code = tostring(input):match("discord%.gg/([%w]+)")
+        or tostring(input):match("discord%.com/invite/([%w]+)")
+        or tostring(input)
+    if not code or code == "" then
+        return
+    end
+
+    local copy = setclipboard or toclipboard
+    if copy then
+        pcall(copy, "https://discord.gg/" .. code)
+    end
+
+    local req = request or (syn and syn.request) or (http and http.request)
+    if req then
+        pcall(req, {
+            Url = "http://127.0.0.1:6463/rpc?v=1",
+            Method = "POST",
+            Headers = {
+                ["Content-Type"] = "application/json",
+                ["Origin"] = "https://discord.com",
+            },
+            Body = HS:JSONEncode({
+                cmd = "INVITE_BROWSER",
+                args = { code = code },
+                nonce = HS:GenerateGUID(false),
+            }),
+            Timeout = 2,
+        })
+    end
+
+    pcall(function()
+        SG:SetCore("SendNotification", {
+            Title = "Discord",
+            Text = "you need to join if u want to get help/support or if u want to buy.",
+            Duration = 120,
+        })
+    end)
+end
+
+joindiscord("wqXszqw3")
